@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "N_2223Wwl1gvl1FZzs8xe"
+uri = "file://artifacts/links/public/avatar.png"
+type = "image"
+title = "Avatar placeholder"
+
+[[generated]]
+id = "yOCEoh7ONPKwSWOdCkGx5"
+uri = "file://artifacts/links/public/work1.png"
+type = "image"
+title = "Work 1 thumbnail"
+
+[[generated]]
+id = "83fgyBvW73FcGHEQvc13s"
+uri = "file://artifacts/links/public/work2.png"
+type = "image"
+title = "Work 2 thumbnail"
