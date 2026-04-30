@@ -10,10 +10,15 @@ import {
   Youtube, 
   Github, 
   Linkedin, 
-  Twitter, 
   Globe, 
   ArrowUpRight 
 } from "lucide-react";
+
+const Deviantart = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M19.207 4.794l.23-.43V0H15.07l-.436.44-2.058 3.925-.646.436H4.58v6.42h4.04l.36.436-4.4 8.388v4.36h4.368l.426-.44 2.07-3.925.644-.436h7.34v-6.42h-4.05l-.36-.438 4.19-7.95z"/>
+  </svg>
+);
 
 // ====== EDITE AQUI: seus dados pessoais ======
 const PROFILE = {
@@ -29,7 +34,7 @@ const LINKS = [
   { label: "YouTube", url: "https://youtube.com", icon: Youtube },
   { label: "GitHub", url: "https://github.com", icon: Github },
   { label: "LinkedIn", url: "https://linkedin.com", icon: Linkedin },
-  { label: "Deviantart", url: "https://www.deviantart.com/denka-maoda-pedro", icon: Twitter },
+  { label: "Deviantart", url: "https://www.deviantart.com/denka-maoda-pedro", icon: Deviantart },
 ];
 
 // ====== EDITE AQUI: seus trabalhos favoritos ======
