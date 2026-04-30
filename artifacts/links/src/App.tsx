@@ -17,9 +17,9 @@ import {
 
 // ====== EDITE AQUI: seus dados pessoais ======
 const PROFILE = {
-  name: "Pedro",
-  bio: "Senior Design Engineer & Digital Creator. Transformando ideias complexas em experiências elegantes.",
-  avatar: "/avatar.png", // Troque pela URL da sua foto
+  name: "Modelo 2 Teste",
+  bio: "HUEHUE TESTE.",
+  avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSRQBpXi2sM7EYh88CyibizQ0OOGCHHJk0Aw&s", // Troque pela URL da sua foto
 };
 
 // ====== EDITE AQUI: seus links ======
@@ -29,7 +29,7 @@ const LINKS = [
   { label: "YouTube", url: "https://youtube.com", icon: Youtube },
   { label: "GitHub", url: "https://github.com", icon: Github },
   { label: "LinkedIn", url: "https://linkedin.com", icon: Linkedin },
-  { label: "X / Twitter", url: "https://twitter.com", icon: Twitter },
+  { label: "Deviantart", url: "https://www.deviantart.com/denka-maoda-pedro", icon: Twitter },
 ];
 
 // ====== EDITE AQUI: seus trabalhos favoritos ======
@@ -38,13 +38,13 @@ const WORKS = [
     title: "Project Alpha", 
     description: "Design system e plataforma web para fintech.", 
     image: "/work1.png", 
-    url: "https://example.com/alpha" 
+    url: "https://denkaakumapedro.wixsite.com/portfolio/trabalho-2" 
   },
   { 
     title: "Neon Dashboard", 
     description: "Interface analítica com foco em visualização de dados.", 
     image: "/work2.png", 
-    url: "https://example.com/neon" 
+    url: "https://denkaakumapedro.wixsite.com/portfolio/trabalho-5" 
   },
 ];
 
