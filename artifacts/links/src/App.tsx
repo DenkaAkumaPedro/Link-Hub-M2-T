@@ -201,11 +201,15 @@ function Home() {
         {/* Header Profile */}
         <motion.div variants={itemVariants} className="flex flex-col items-center text-center mb-10">
           <div className="relative group mb-6">
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-accent opacity-75 blur-md group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div
+              className="absolute -inset-2 bg-gradient-to-r from-primary to-accent opacity-75 blur-md group-hover:opacity-100 transition-opacity duration-500"
+              style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+            />
             <img 
               src={PROFILE.avatar} 
               alt={PROFILE.name} 
-              className="relative w-28 h-28 rounded-full object-cover border-2 border-background/50 z-10"
+              className="relative w-28 h-28 object-cover z-10"
+              style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
             />
           </div>
           <h1 className="text-3xl font-bold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70">
