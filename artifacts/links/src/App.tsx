@@ -46,10 +46,10 @@ const WORKS = [
     url: "https://denkaakumapedro.wixsite.com/portfolio/trabalho-6" 
   },
   { 
-    title: "Neon Dashboard", 
-    description: "Interface analítica com foco em visualização de dados.", 
-    image: "/work2.png", 
-    url: "https://denkaakumapedro.wixsite.com/portfolio/trabalho-5" 
+    title: "3D Castelo", 
+    description: "Modelagem 3D de ambiente externo com iluminação simulando dia, tarde e noite.", 
+    image: "/work-castelo.png", 
+    url: "https://denkaakumapedro.wixsite.com/portfolio/trabalho-2" 
   },
 ];
 
