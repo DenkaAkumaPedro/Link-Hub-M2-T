@@ -18,3 +18,9 @@ id = "83fgyBvW73FcGHEQvc13s"
 uri = "file://artifacts/links/public/work2.png"
 type = "image"
 title = "Work 2 thumbnail"
+
+[[generated]]
+id = "cVbyPEHr0TY1I_SKx84ax"
+uri = "file://attached_assets/generated_images/generated_image.png"
+type = "image"
+title = "generated_image"

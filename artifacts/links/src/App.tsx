@@ -40,10 +40,10 @@ const LINKS = [
 // ====== EDITE AQUI: seus trabalhos favoritos ======
 const WORKS = [
   { 
-    title: "Project Alpha", 
-    description: "Design system e plataforma web para fintech.", 
-    image: "/work1.png", 
-    url: "https://denkaakumapedro.wixsite.com/portfolio/trabalho-2" 
+    title: "Line Art Valvatore", 
+    description: "Animação de line art do personagem Valvatore do game Disgaea 4.", 
+    image: "/work-valvatore.png", 
+    url: "https://denkaakumapedro.wixsite.com/portfolio/trabalho-6" 
   },
   { 
     title: "Neon Dashboard", 
