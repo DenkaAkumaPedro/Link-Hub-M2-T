@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -53,6 +53,117 @@ const WORKS = [
   },
 ];
 
+function HexagonBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animId: number;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const HEX_RADIUS = 32;
+    const GAP = 6;
+    const STEP = (HEX_RADIUS * 2 + GAP) * Math.sin(Math.PI / 3);
+    const ROW_H = (HEX_RADIUS * 2 + GAP) * 0.75 + HEX_RADIUS * 0.5;
+
+    type Hex = {
+      x: number;
+      y: number;
+      baseX: number;
+      baseY: number;
+      phase: number;
+      speed: number;
+      amp: number;
+      alpha: number;
+      alphaTarget: number;
+      alphaDelta: number;
+    };
+
+    const hexes: Hex[] = [];
+
+    const cols = Math.ceil(window.innerWidth / STEP) + 2;
+    const rows = Math.ceil(window.innerHeight / (ROW_H)) + 2;
+
+    for (let row = -1; row < rows; row++) {
+      for (let col = -1; col < cols; col++) {
+        const offset = row % 2 === 0 ? 0 : STEP / 2;
+        const bx = col * STEP + offset;
+        const by = row * ROW_H;
+        hexes.push({
+          x: bx,
+          y: by,
+          baseX: bx,
+          baseY: by,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.004 + Math.random() * 0.006,
+          amp: 3 + Math.random() * 5,
+          alpha: Math.random() * 0.12 + 0.03,
+          alphaTarget: Math.random() * 0.12 + 0.03,
+          alphaDelta: (Math.random() - 0.5) * 0.0004,
+        });
+      }
+    }
+
+    const drawHex = (x: number, y: number, r: number, alpha: number) => {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 180) * (60 * i - 30);
+        const px = x + r * Math.cos(angle);
+        const py = y + r * Math.sin(angle);
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    };
+
+    let t = 0;
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      t++;
+
+      for (const h of hexes) {
+        h.phase += h.speed;
+        h.x = h.baseX + Math.cos(h.phase) * h.amp;
+        h.y = h.baseY + Math.sin(h.phase * 0.7) * h.amp * 0.6;
+
+        h.alpha += h.alphaDelta;
+        if (h.alpha > 0.18 || h.alpha < 0.02) h.alphaDelta *= -1;
+
+        drawHex(h.x, h.y, HEX_RADIUS, h.alpha);
+      }
+
+      animId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 0 }}
+    />
+  );
+}
+
 const queryClient = new QueryClient();
 
 const containerVariants = {
@@ -78,10 +189,8 @@ const itemVariants = {
 function Home() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center py-16 px-4 sm:px-6">
-      {/* Background Effects */}
-      <div className="noise-bg mix-blend-overlay"></div>
-      <div className="fixed top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
-      <div className="fixed bottom-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-accent/10 blur-[150px] pointer-events-none" />
+      {/* Hexagon Background */}
+      <HexagonBackground />
       
       <motion.div 
         className="relative z-10 w-full max-w-[600px] mx-auto flex flex-col items-center"
