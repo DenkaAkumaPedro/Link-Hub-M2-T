@@ -200,17 +200,54 @@ function Home() {
       >
         {/* Header Profile */}
         <motion.div variants={itemVariants} className="flex flex-col items-center text-center mb-10">
-          <div className="relative group mb-6">
-            <div
-              className="absolute -inset-2 bg-gradient-to-r from-primary to-accent opacity-75 blur-md group-hover:opacity-100 transition-opacity duration-500"
-              style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
-            />
-            <img 
-              src={PROFILE.avatar} 
-              alt={PROFILE.name} 
-              className="relative w-28 h-28 object-cover z-10"
-              style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
-            />
+          <div className="relative group mb-6 w-32 h-32">
+            <svg
+              viewBox="0 0 120 120"
+              className="absolute inset-0 w-full h-full"
+              style={{ zIndex: 20, pointerEvents: "none" }}
+            >
+              <defs>
+                <filter id="hex-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <linearGradient id="hex-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="rgb(168,85,247)" />
+                  <stop offset="100%" stopColor="rgb(6,182,212)" />
+                </linearGradient>
+              </defs>
+              <polygon
+                points="60,4 112,32 112,88 60,116 8,88 8,32"
+                fill="none"
+                stroke="url(#hex-grad)"
+                strokeWidth="2"
+                filter="url(#hex-glow)"
+                className="transition-all duration-500 group-hover:opacity-100"
+                opacity="0.85"
+              />
+            </svg>
+            <svg
+              viewBox="0 0 120 120"
+              className="absolute inset-0 w-full h-full"
+              style={{ zIndex: 10 }}
+            >
+              <defs>
+                <clipPath id="hex-clip">
+                  <polygon points="60,4 112,32 112,88 60,116 8,88 8,32" />
+                </clipPath>
+              </defs>
+              <image
+                href={PROFILE.avatar}
+                x="0" y="0"
+                width="120" height="120"
+                preserveAspectRatio="xMidYMid slice"
+                clipPath="url(#hex-clip)"
+              />
+            </svg>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mb-2 text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/70">
             {PROFILE.name}
