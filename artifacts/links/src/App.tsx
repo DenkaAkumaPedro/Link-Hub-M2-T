@@ -164,6 +164,39 @@ function HexagonBackground() {
   );
 }
 
+function HexIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative flex items-center justify-center w-10 h-10 shrink-0">
+      <svg viewBox="0 0 40 40" className="absolute inset-0 w-full h-full" aria-hidden="true">
+        <defs>
+          <filter id="hex-icon-glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <linearGradient id="hex-icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgb(168,85,247)" />
+            <stop offset="100%" stopColor="rgb(6,182,212)" />
+          </linearGradient>
+        </defs>
+        <polygon
+          points="20,2 36,11 36,29 20,38 4,29 4,11"
+          fill="rgba(168,85,247,0.08)"
+          stroke="url(#hex-icon-grad)"
+          strokeWidth="1.2"
+          filter="url(#hex-icon-glow)"
+          className="transition-all duration-300 group-hover:fill-[rgba(168,85,247,0.25)]"
+        />
+      </svg>
+      <span className="relative z-10 text-secondary-foreground group-hover:text-primary-foreground transition-colors duration-300">
+        {children}
+      </span>
+    </div>
+  );
+}
+
 const queryClient = new QueryClient();
 
 const containerVariants = {
@@ -273,9 +306,9 @@ function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 <div className="relative flex items-center gap-4 z-10">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                  <HexIcon>
                     <Icon className="w-5 h-5" />
-                  </div>
+                  </HexIcon>
                   <span className="font-medium text-lg">{link.label}</span>
                 </div>
                 
