@@ -24,12 +24,12 @@ const Deviantart = ({ className }: { className?: string }) => (
 const PROFILE = {
   name: "Modelo 2 Teste",
   bio: "HUEHUE TESTE.",
-  avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSRQBpXi2sM7EYh88CyibizQ0OOGCHHJk0Aw&s", // Troque pela URL da sua foto
+  avatar: "https://pps.services.adobe.com/api/profile/44D62C1653E8E3E80A490D4B@AdobeID/image/7f2584d0-cff9-4010-95ca-f62397d3e529/115", // Troque pela URL da sua foto
 };
 
 // ====== EDITE AQUI: seus links ======
 const LINKS = [
-  { label: "Site Pessoal", url: "https://example.com", icon: Globe },
+  { label: "Site Pessoal", url: "https://www.behance.net/DenkaAkumaPedro", icon: Globe },
   { label: "Instagram", url: "https://instagram.com", icon: Instagram },
   { label: "YouTube", url: "https://youtube.com", icon: Youtube },
   { label: "GitHub", url: "https://github.com", icon: Github },
